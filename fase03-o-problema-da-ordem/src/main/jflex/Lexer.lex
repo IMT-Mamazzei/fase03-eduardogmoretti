@@ -82,7 +82,7 @@ Identifier = {Letter}({Letter}|{Digit}|_){0,31}
     {Number}        { return symbol(sym.NUMBER, yytext()); }
 
     /* Identificadores grandes demais (Captura o erro) */
-    {Letter}({Letter}|{Digit}|_){32,} { 
+    {Letter}({Letter}|{Digit}|_){32}({Letter}|{Digit}|_)* { 
         throw new RuntimeException("Erro Léxico: Identificador ultrapassou 32 caracteres -> " + yytext()); 
     }
 
